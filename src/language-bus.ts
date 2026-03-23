@@ -1,6 +1,10 @@
 import {
-  AppLanguage, DEFAULT_LANGUAGE, LANGUAGE_CHANGED_EVENT, LANGUAGE_STORAGE_KEY, SUPPORTED_LANGUAGES
-} from "./i18n-contract";
+  AppLanguage,
+  DEFAULT_LANGUAGE,
+  LANGUAGE_CHANGED_EVENT,
+  LANGUAGE_STORAGE_KEY,
+  SUPPORTED_LANGUAGES,
+} from './i18n-contract';
 
 export function getStoredLanguage(): AppLanguage {
   const value = localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -18,12 +22,12 @@ export function setGlobalLanguage(lang: AppLanguage): void {
   window.dispatchEvent(
     new CustomEvent(LANGUAGE_CHANGED_EVENT, {
       detail: lang,
-    }),
+    })
   );
 }
 
 export function onGlobalLanguageChange(
-  callback: (lang: AppLanguage) => void,
+  callback: (lang: AppLanguage) => void
 ): () => void {
   const handler = (event: Event) => {
     const customEvent = event as CustomEvent<AppLanguage>;
